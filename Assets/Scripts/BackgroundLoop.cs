@@ -7,19 +7,21 @@ public class BackgroundLoop : MonoBehaviour
     private float width;
     void Awake()
     {
-        BoxCollider2d backgroundCollider = GetCompenent<BoxCollider2d>();
+        BoxCollider2D backgroundCollider = GetComponent<BoxCollider2D>();
         width = backgroundCollider.size.x; //2,48
     }
 
-    
-    void Update()
+
+    private void Update()
     {
-        if(transform.posittion.x <= -width)
+        if (transform.position.x <= -width)
+        {
+            Reposition();
+        }
     }
-}
-    private void Reposittion()
+    private void Reposition()
     {
     Vector2 offset = new Vector2(width * 2f, 0);
-    transform.posittion = (vector2)transform.posittion + offset;
+    transform.position = (Vector2)transform.position + offset;
     }
 }
